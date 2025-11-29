@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ホリゾンタルモバイルエンジニアリング合同会社 | 公式サイト</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Space+Grotesk:wght@500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --panel: rgba(255, 255, 255, 0.06);
+      --accent: #3dd5b0;
+      --accent-2: #f7c948;
+      --text: #e5ecff;
+      --muted: #9fb3c8;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.25);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Noto Sans JP', 'Hiragino Sans', 'Meiryo', sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 20% 20%, rgba(61, 213, 176, 0.18), transparent 30%),
+                  radial-gradient(circle at 80% 10%, rgba(247, 201, 72, 0.18), transparent 25%),
+                  linear-gradient(135deg, #0b1224 0%, #0f172a 60%, #0b1224 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(15, 23, 42, 0.75);
+      border-bottom: 1px solid var(--border);
+      z-index: 10;
+    }
+    nav {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid;
+      place-items: center;
+      color: #0b1224;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+    }
+    .nav-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 10px;
+      border-radius: 10px;
+      transition: color 0.2s ease, background 0.2s ease;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.06);
+    }
+    .hero {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 82px 22px 60px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      align-items: center;
+    }
+    .hero h1 {
+      font-family: 'Space Grotesk', 'Noto Sans JP', sans-serif;
+      font-size: clamp(34px, 6vw, 52px);
+      letter-spacing: 0.01em;
+      margin: 0 0 18px;
+    }
+    .hero p {
+      color: var(--muted);
+      margin: 0 0 22px;
+      line-height: 1.7;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(61, 213, 176, 0.12);
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .cta-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 18px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, rgba(61, 213, 176, 0.2), rgba(61, 213, 176, 0.08));
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 700;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border 0.2s ease;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+    .btn.secondary {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+      border-color: rgba(255, 255, 255, 0.24);
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 18px;
+    }
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 42px 22px;
+    }
+    .section h2 {
+      font-size: 22px;
+      margin: 0 0 12px;
+      letter-spacing: 0.05em;
+    }
+    .section p.lead {
+      color: var(--muted);
+      margin: 0 0 20px;
+      line-height: 1.6;
+    }
+    ul.clean {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 10px;
+    }
+    ul.clean li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .badge {
+      background: rgba(247, 201, 72, 0.16);
+      color: var(--accent-2);
+      padding: 6px 10px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: 0.04em;
+    }
+    .profile {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 12px;
+    }
+    .profile-item {
+      padding: 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 22px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+      background: rgba(10, 15, 28, 0.9);
+    }
+    @media (max-width: 640px) {
+      nav { padding: 16px; }
+      .hero { padding: 62px 18px 40px; }
+      .cta-row { flex-direction: column; align-items: stretch; }
+      .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="logo" href="#top">
+        <div class="logo-mark">HM</div>
+        <span>Horizontal Mobile Engineering LLC</span>
+      </a>
+      <div class="nav-links">
+        <a href="#vision">ビジョン</a>
+        <a href="#business">事業</a>
+        <a href="#company">会社情報</a>
+        <a href="#contact">お問い合わせ</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div>
+        <div class="pill">モバイルから横断するテクノロジー</div>
+        <h1>ホリゾンタルモバイルエンジニアリング合同会社</h1>
+        <p>横浜市を拠点に、モバイルを軸としたソフトウェア開発からシステム販売、投資、不動産事業まで横断的に手掛けるテクノロジーカンパニーです。</p>
+        <div class="cta-row">
+          <a class="btn" href="#business">事業内容を見る</a>
+          <a class="btn secondary" href="#company">会社概要</a>
+        </div>
+      </div>
+      <div class="panel">
+        <h2 style="margin-top:0;">コアメッセージ</h2>
+        <ul class="clean">
+          <li><span class="badge">Software</span><span>最新技術と堅実な品質で、価値あるプロダクトを迅速に形にします。</span></li>
+          <li><span class="badge">Investment</span><span>有価証券への機動的な投資・運用で、新しい挑戦を支えます。</span></li>
+          <li><span class="badge">Real Estate</span><span>不動産売買・賃貸・管理までワンストップで対応し、資産価値を最大化します。</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="vision" class="section">
+      <h2>Vision</h2>
+      <p class="lead">ソフトウェアとリアルアセットを横断し、地域の事業成長をモバイルから加速させる。「横断（Horizontal）」の名の通り、業種の壁を超えた技術実装で社会に新しい選択肢を提供します。</p>
+    </section>
+
+    <section id="business" class="section">
+      <h2>事業ドメイン</h2>
+      <div class="grid-3">
+        <div class="panel">
+          <div class="badge">01 ソフトウェア業</div>
+          <p class="lead">モバイルアプリ・クラウド連携・UI/UX設計を含むフルスタック開発。PoCから運用まで伴走します。</p>
+        </div>
+        <div class="panel">
+          <div class="badge">02 システム開発・販売</div>
+          <p class="lead">業務システムの開発とライセンス提供。小規模SaaSからエンタープライズ連携まで柔軟に対応。</p>
+        </div>
+        <div class="panel">
+          <div class="badge">03 有価証券への投資・運用</div>
+          <p class="lead">市場調査とリスク管理に基づくポートフォリオ運用で、事業基盤の安定と拡張を支援します。</p>
+        </div>
+        <div class="panel">
+          <div class="badge">04 不動産の売買・賃貸・管理</div>
+          <p class="lead">収益不動産の選定から運用改善、管理まで一気通貫でサポート。仲介もワンストップで提供。</p>
+        </div>
+        <div class="panel">
+          <div class="badge">05 付帯業務</div>
+          <p class="lead">上記に附帯する各種コンサルティング・調査業務を実施。専門家ネットワークと連携し最適解を提示。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="company" class="section">
+      <h2>会社概要</h2>
+      <div class="profile">
+        <div class="profile-item">
+          <strong>商号</strong><br>
+          ホリゾンタルモバイルエンジニアリング合同会社
+        </div>
+        <div class="profile-item">
+          <strong>本店所在地</strong><br>
+          横浜市港北区樽町三丁目7番13－24号
+        </div>
+        <div class="profile-item">
+          <strong>会社成立の年月日</strong><br>
+          令和7年10月7日（2025年10月7日）
+        </div>
+        <div class="profile-item">
+          <strong>代表社員 / 業務執行社員</strong><br>
+          堀 達也<br>
+          横浜市港北区樽町三丁目7番13－24号
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>お問い合わせ</h2>
+      <p class="lead">パートナーシップ、開発のご相談、取材依頼などお気軽にお声がけください。メールアドレス未定の場合は差し替えてご利用ください。</p>
+      <div class="panel">
+        <div class="cta-row">
+          <a class="btn" href="mailto:">メールで連絡する</a>
+          <a class="btn secondary" href="#company">会社情報を確認する</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    © 2025 ホリゾンタルモバイルエンジニアリング合同会社
+  </footer>
+</body>
+</html>
